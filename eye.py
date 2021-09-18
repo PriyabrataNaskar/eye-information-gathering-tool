@@ -36,33 +36,36 @@ def findLocation():
     details = handler.getDetails(ip_address)
 
     #displaying data
-    print('###### LOCATION FOR IP %s TRACKED SUCCESSFULLY ######'  % (details.ip))
+    print('\n###### LOCATION FOR IP %s TRACKED SUCCESSFULLY ######'  % (details.ip))
     print('Country Code: %s' % (details.country))
     print('Organisation Details: %s' % (details.org))
     print('Country Name: %s' % (details.country_name))
     print('TimeZone: %s' % (details.timezone))
-    print('Region : %s' % (details.region))
+    print('Region : %s\n' % (details.region))
     
 def reverseLookUp():
     an_address = input("Enter an IP (e.g: 127.0.0.1): ")
     domain_name = socket.gethostbyaddr(an_address)[0]
     print(domain_name)
+    print()
 
 def viewWebsiteData():
     websiteName = input("Enter a website (e.g: www.google.com): ")
     w = whois.whois(websiteName)
     print(w.text)
+    print()
 
 def driverFunction():
     banner()
-    choice = int(input('Press 1. to FIND LOCATION of an IP \nPress 2. to perform REVERSE DNS LOOKUP \nPress 3. to gather Website Information\nPress 4. to exit\n'))
-    if choice == 1:
-        findLocation()
-    elif choice == 2:
-        reverseLookUp()
-    elif choice == 3:
-        viewWebsiteData()
-    elif choice == 4:
-        return
+    while(1):
+        choice = int(input('Press 1. to FIND LOCATION of an IP \nPress 2. to perform REVERSE DNS LOOKUP \nPress 3. to gather Website Information\nPress 4. to exit\n'))
+        if choice == 1:
+            findLocation()
+        elif choice == 2:
+            reverseLookUp()
+        elif choice == 3:
+            viewWebsiteData()
+        elif choice == 4:
+            return
         
 driverFunction()
